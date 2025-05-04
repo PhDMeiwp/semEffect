@@ -6,12 +6,13 @@ This package 'semEffect' calculates direct, indirect, and total effects for a ta
 
 ## 1. Install 'semEffect' package in R
 
-- from Github:
+     Option 1: from Github:
 
 	 install.packages("devtools")
 	 devtools::install_github("PhDMeiwp/semEffect", dependencies = TRUE)
 
-- from gitee:
+	 
+	 Option 2: from gitee:
 
 	 install.packages("git2r")
 	 install.packages("remotes")
