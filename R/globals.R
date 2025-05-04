@@ -1,0 +1,1 @@
+utils::globalVariables(c("Variable", "Total_Effect", "Effect_Value", "Effect_Type"))
