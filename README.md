@@ -8,14 +8,22 @@ This package 'semEffect' calculates direct, indirect, and total effects for a ta
 
 - from Github:
 
-		install.packages("devtools")
-		devtools::install_github("PhDMeiwp/semEffect@master", force = TRUE)
-		library(semEffect)
+	 install.packages("devtools")
+	 devtools::install_github("PhDMeiwp/semEffect", dependencies = TRUE)
+
+- from gitee:
+
+	 install.packages("git2r")
+	 install.packages("remotes")
+	 library(git2r)
+	 library(remotes)
+	 remotes::install_git("https://gitee.com/openResearch/semEffect.git")  
+
 
 
 ## 2. Usage
 
-	sem_effects(
+	 sem_effects(
 	  object,
 	  target,
 	  plot = TRUE,
@@ -42,19 +50,19 @@ This package 'semEffect' calculates direct, indirect, and total effects for a ta
 		dem65 ~ ind60 + dem60
 		'
 	
-	fit <- sem(model, data = PoliticalDemocracy)
+	 fit <- sem(model, data = PoliticalDemocracy)
 	
-	# Effects analysis and visualization
-	sem_effects(fit, target = "dem65")
+	 # Effects analysis and visualization
+	 sem_effects(fit, target = "dem65")
 
-	# Analyze effects for target variable "dem65"
-	results <- sem_effects(fit, target = "dem65")
-	print(results$effect_table)
+	 # Analyze effects for target variable "dem65"
+	 results <- sem_effects(fit, target = "dem65")
+	 print(results$effect_table)
 
-	# Customize plot appearance
-	results$plot_object +
-	ggplot2::theme_minimal() +
-	ggplot2::ggtitle("Standardized Effects for dem65")
+	 # Customize plot appearance
+	 results$plot_object +
+	 ggplot2::theme_minimal() +
+	 ggplot2::ggtitle("Standardized Effects for dem65")
 
 
 ## 4. Contact
