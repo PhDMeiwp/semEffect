@@ -2,23 +2,26 @@
 % Please edit documentation in R/sem_effects.R
 \name{sem_effects}
 \alias{sem_effects}
-\title{Structural Equation Model (SEM) Effects Analysis and Visualization}
+\title{Structural Equation Model Effect Analysis and Visualization}
 \usage{
 sem_effects(
   object,
   target,
   plot = TRUE,
+  delete.zero.effect = TRUE,
   total_only = FALSE,
   total_colors = "skyblue",
   color_palette = c("darkgreen", "skyblue", "orange")
 )
 }
 \arguments{
-\item{object}{A fitted SEM model object of class \code{"lavaan"}.}
+\item{object}{SEM object (lavaan/psem/plspm).}
 
 \item{target}{Character string specifying the target variable name for effect analysis.}
 
 \item{plot}{Logical indicating whether to generate effect visualization plots (default: \code{TRUE}).}
+
+\item{delete.zero.effect}{Logical indicating whether to removes rows where all specified effect columns contain only zeros (default: \code{TRUE}).}
 
 \item{total_only}{Logical controlling plot mode. If \code{TRUE}, shows only total effects with customizable colors;
 if \code{FALSE}, displays all effect types with palette coloring (default: \code{FALSE}).}
@@ -30,20 +33,24 @@ if \code{FALSE}, displays all effect types with palette coloring (default: \code
 (default: \code{c("darkgreen", "skyblue", "orange")}).}
 }
 \value{
-A list containing two components:
+A list containing three components:
 \itemize{
 \item \code{effect_table}: A data frame with variables and their standardized effect values (direct, indirect, total)
+\item \code{effect_long}: A long-format version of \code{effect_table}
 \item \code{plot_object}: A ggplot2 object (if plot=TRUE), NULL otherwise
 }
 }
 \description{
-This function calculates direct, indirect, and total effects for a target variable in a SEM model.
-It supports visualization of effects through bar plots and includes automated dependency checks.
+Provides standardized effect decomposition (direct, indirect, and total effects) for three major structural equation modeling frameworks:
+lavaan, piecewiseSEM, and plspm. Automatically handles zero-effect variables, generates publication-ready ggplot2 visualizations, and returns
+both wide-format and long-format effect tables. Supports effect filtering, multi-model object inputs, and customizable visualization parameters.
 }
 \examples{
 \donttest{
-# Example using lavaan::sem()
+# Example 01: lavaan
+
 library(lavaan)
+
 model <- '
   # Measurement model
   ind60 =~ x1 + x2 + x3
@@ -58,12 +65,59 @@ fit <- sem(model, data = PoliticalDemocracy)
 
 # Analyze effects for target variable "dem65"
 results <- sem_effects(fit, target = "dem65")
+
 print(results$effect_table)
+print(results$effect_long)
+print(results$plot_object)
 
 # Customize plot appearance
 results$plot_object +
+  ggplot2::coord_flip()+
   ggplot2::theme_minimal() +
   ggplot2::ggtitle("Standardized Effects for dem65")
+
+
+# Example 02: piecewiseSEM
+
+library(piecewiseSEM)
+pmod <- psem(
+  lm(rich ~ cover, data = keeley),
+  lm(cover ~ firesev, data = keeley),
+  lm(firesev ~ age, data = keeley),
+  data = keeley
+  )
+
+sem_effects(pmod, target = "rich",
+        color_palette = c("darkgreen", "grey80", "purple"))
+
+
+# Example 03: plspm
+
+library(plspm)
+data(satisfaction)
+
+# path matrix
+IMAG = c(0,0,0,0,0,0)
+EXPE = c(1,0,0,0,0,0)
+QUAL = c(0,1,0,0,0,0)
+VAL = c(0,1,1,0,0,0)
+SAT = c(1,1,1,1,0,0)
+LOY = c(1,0,0,0,1,0)
+sat_path = rbind(IMAG, EXPE, QUAL, VAL, SAT, LOY)
+
+# blocks of outer model
+sat_blocks = list(1:5, 6:10, 11:15, 16:19, 20:23, 24:27)
+
+# vector of modes (reflective indicators)
+sat_mod = rep("A", 6)
+
+# apply plspm
+plsmodel = plspm(satisfaction, sat_path, sat_blocks, modes = sat_mod)
+
+sem_effects(plsmodel, target = "LOY", plot = TRUE, delete.zero.effect = TRUE,
+            total_only = TRUE,
+            total_colors = RColorBrewer::brewer.pal(5,"Set3"))
+
 }
 
 }
