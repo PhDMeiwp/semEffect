@@ -8,7 +8,7 @@
 > lavaan, piecewiseSEM, and plspm. Automatically handles zero-effect variables, generates publication-ready ggplot2 visualizations, and returns 
 > both wide-format and long-format effect tables. Supports effect filtering, multi-model object inputs, and customizable visualization parameters.
 
-## 1. Install 'semEffect' package in R
+## 1. Installation
 
      Option 1: from Github:
 
@@ -32,9 +32,9 @@
 	  object,
 	  target,
 	  plot = TRUE,
-	  delete.zero.effect = TRUE,
+	  delete_zero_effect = TRUE,
 	  total_only = FALSE,
-	  total_colors = "skyblue",
+	  total_color = "skyblue",
 	  color_palette = c("darkgreen", "skyblue", "orange")
 	)
 
@@ -44,7 +44,7 @@
 	 library(semEffect)
 	 library(ggplot2)
 
-     # Example 01: lavaan
+     # Example 01: lavaan ----------------------------------
 	 
 	 library(lavaan)
 	 
@@ -72,9 +72,9 @@
 	 results$plot_object +
 	   ggplot2::coord_flip()+
 	   ggplot2::theme_minimal() +
-	   ggplot2::ggtitle("Standardized Effects for dem65")
+	   ggplot2::ggtitle("Standardized effects for dem65")
 
-	 # Example 02: piecewiseSEM
+	 # Example 02: piecewiseSEM -----------------------------
 
 	 library(piecewiseSEM)
 	 
@@ -89,7 +89,7 @@
 			color_palette = c("darkgreen", "grey80", "purple"))
 			
 	 
-	 # Example 03: plspm
+	 # Example 03: plspm --------------------------------------
 
 	 library(plspm)
 	 data(satisfaction)
@@ -112,9 +112,9 @@
 	 # apply plspm
 	 plsmodel = plspm(satisfaction, sat_path, sat_blocks, modes = sat_mod)
 
-	 sem_effects(plsmodel, target = "LOY", plot = TRUE, delete.zero.effect = TRUE,
+	 sem_effects(plsmodel, target = "LOY", plot = TRUE, delete_zero_effect = TRUE,
 				total_only = TRUE,
-				total_colors = RColorBrewer::brewer.pal(5,"Set3"))
+				total_color = RColorBrewer::brewer.pal(5,"Set3"))
 
 ## 4. Contact
 

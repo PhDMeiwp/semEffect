@@ -7,10 +7,10 @@
 #' @param object SEM object (lavaan/psem/plspm).
 #' @param target Character string specifying the target variable name for effect analysis.
 #' @param plot Logical indicating whether to generate effect visualization plots (default: \code{TRUE}).
-#' @param delete.zero.effect Logical indicating whether to removes rows where all specified effect columns contain only zeros (default: \code{TRUE}). 
+#' @param delete_zero_effect Logical indicating whether to removes rows where all specified effect columns contain only zeros (default: \code{TRUE}). 
 #' @param total_only Logical controlling plot mode. If \code{TRUE}, shows only total effects with customizable colors;
 #'   if \code{FALSE}, displays all effect types with palette coloring (default: \code{FALSE}).
-#' @param total_colors Single color or vector of colors for total effect bars when \code{total_only=TRUE}
+#' @param total_color Single color or vector of colors for total effect bars when \code{total_only=TRUE}
 #'   (default: \code{"skyblue"}).
 #' @param color_palette Character vector of 3 colors for direct/indirect/total effects when \code{total_only=FALSE}
 #'   (default: \code{c("darkgreen", "skyblue", "orange")}).
@@ -22,9 +22,13 @@
 #'   \item \code{plot_object}: A ggplot2 object (if plot=TRUE), NULL otherwise
 #' }
 #'
+#' @author Weiping Mei
+#'
+#' @seealso \code{\link[lavaan]{sem}}, \code{\link[piecewiseSEM]{psem}}, \code{\link[plspm]{plspm}}
+#'
 #' @examples
 #' \donttest{
-#' # Example 01: lavaan
+#' # Example 01: lavaan -------------------------------
 #' 
 #' library(lavaan)
 #' 
@@ -51,10 +55,10 @@
 #' results$plot_object +
 #'   ggplot2::coord_flip()+
 #'   ggplot2::theme_minimal() +
-#'   ggplot2::ggtitle("Standardized Effects for dem65")
+#'   ggplot2::ggtitle("Standardized effects for dem65")
 #' 
 #' 
-#' # Example 02: piecewiseSEM
+#' # Example 02: piecewiseSEM --------------------------
 #' 
 #' library(piecewiseSEM)
 #' pmod <- psem(
@@ -68,7 +72,7 @@
 #'         color_palette = c("darkgreen", "grey80", "purple"))
 #' 
 #' 
-#' # Example 03: plspm
+#' # Example 03: plspm ---------------------------------
 #' 
 #' library(plspm)
 #' data(satisfaction)
@@ -91,9 +95,9 @@
 #' # apply plspm
 #' plsmodel = plspm(satisfaction, sat_path, sat_blocks, modes = sat_mod)
 #'   
-#' sem_effects(plsmodel, target = "LOY", plot = TRUE, delete.zero.effect = TRUE,
+#' sem_effects(plsmodel, target = "LOY", plot = TRUE, delete_zero_effect = TRUE,
 #'             total_only = TRUE, 
-#'             total_colors = RColorBrewer::brewer.pal(5,"Set3"))
+#'             total_color = RColorBrewer::brewer.pal(5,"Set3"))
 #'    
 #' }
 #'
@@ -103,6 +107,7 @@
 #' @importFrom tidyr separate pivot_longer
 #' @importFrom dplyr %>% filter select
 #' @importFrom utils install.packages
+#' @importFrom RColorBrewer brewer.pal
 #' @import checkmate
 #' @import plspm
 #' @export
@@ -111,13 +116,13 @@ sem_effects <- function(
     object,
     target,
     plot = TRUE,
-    delete.zero.effect = TRUE,
+    delete_zero_effect = TRUE,
     total_only = FALSE,
-    total_colors = "skyblue",
+    total_color = "skyblue",
     color_palette = c("darkgreen", "skyblue", "orange")) {
 
 # Automatically install missing dependencies:
-  required_packages <- c("lavaan", "piecewiseSEM", "plspm", "ggplot2", "checkmate", "tidyr", "dplyr")
+  required_packages <- c("lavaan", "piecewiseSEM", "plspm", "ggplot2", "checkmate", "tidyr", "dplyr", "RColorBrewer")
   for (pkg in required_packages) {
     if (!requireNamespace(pkg, quietly = TRUE)) {
       install.packages(pkg)
@@ -131,7 +136,7 @@ sem_effects <- function(
   checkmate::assert_string(target)
   checkmate::assert_flag(plot)
   checkmate::assert_flag(total_only)
-  checkmate::assert_flag(delete.zero.effect)
+  checkmate::assert_flag(delete_zero_effect)
 
   if (inherits(object,"lavaan")){
 # Case 1: lavaan ---------------------------------------------------------
@@ -265,11 +270,11 @@ sem_effects <- function(
     warning(
       "(1) The target variable'", target, "'might be incorrect due to variable(s) with all-zero effect(s): ", paste(zero_vars, collapse = ", "), 
       ".\n  (2) The all-zero effect variable '",paste(zero_vars, collapse = ", "), "' is removed from the plot by default.",
-      "\n  (3) If you want to keep the all-zero effect variable '",paste(zero_vars, collapse = ", "),"', please set the parameter delete.zero.effect to FALSE."
+      "\n  (3) If you want to keep the all-zero effect variable '",paste(zero_vars, collapse = ", "),"', please set the parameter delete_zero_effect to FALSE."
     )
   }
 
-  if (delete.zero.effect){
+  if (delete_zero_effect){
     clean_data <- effect_filtered[!all_zero_rows, ] 
   }else{
     clean_data = effect_filtered
@@ -291,10 +296,10 @@ sem_effects <- function(
       effect_total <- effect_filtered %>% 
             dplyr::select(Variable, Total_Effect)
 
-      if (length(total_colors) == 1) {
-        colors <- rep(total_colors, nrow(effect_total))
+      if (length(total_color) == 1) {
+        colors <- rep(total_color, nrow(effect_total))
       } else {
-        colors <- total_colors[1:nrow(effect_total)]
+        colors <- total_color[1:nrow(effect_total)]
       }
          p <- ggplot2::ggplot(effect_total, aes(x = Variable, y = Total_Effect, fill = Variable)) +
            ggplot2::geom_col(width = 0.5) +

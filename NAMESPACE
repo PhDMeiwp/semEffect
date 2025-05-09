@@ -3,6 +3,7 @@
 export(sem_effects)
 import(checkmate)
 import(plspm)
+importFrom(RColorBrewer,brewer.pal)
 importFrom(dplyr,"%>%")
 importFrom(dplyr,filter)
 importFrom(dplyr,select)

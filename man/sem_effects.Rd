@@ -8,9 +8,9 @@ sem_effects(
   object,
   target,
   plot = TRUE,
-  delete.zero.effect = TRUE,
+  delete_zero_effect = TRUE,
   total_only = FALSE,
-  total_colors = "skyblue",
+  total_color = "skyblue",
   color_palette = c("darkgreen", "skyblue", "orange")
 )
 }
@@ -21,12 +21,12 @@ sem_effects(
 
 \item{plot}{Logical indicating whether to generate effect visualization plots (default: \code{TRUE}).}
 
-\item{delete.zero.effect}{Logical indicating whether to removes rows where all specified effect columns contain only zeros (default: \code{TRUE}).}
+\item{delete_zero_effect}{Logical indicating whether to removes rows where all specified effect columns contain only zeros (default: \code{TRUE}).}
 
 \item{total_only}{Logical controlling plot mode. If \code{TRUE}, shows only total effects with customizable colors;
 if \code{FALSE}, displays all effect types with palette coloring (default: \code{FALSE}).}
 
-\item{total_colors}{Single color or vector of colors for total effect bars when \code{total_only=TRUE}
+\item{total_color}{Single color or vector of colors for total effect bars when \code{total_only=TRUE}
 (default: \code{"skyblue"}).}
 
 \item{color_palette}{Character vector of 3 colors for direct/indirect/total effects when \code{total_only=FALSE}
@@ -35,19 +35,19 @@ if \code{FALSE}, displays all effect types with palette coloring (default: \code
 \value{
 A list containing three components:
 \itemize{
-\item \code{effect_table}: A data frame with variables and their standardized effect values (direct, indirect, total)
-\item \code{effect_long}: A long-format version of \code{effect_table}
-\item \code{plot_object}: A ggplot2 object (if plot=TRUE), NULL otherwise
+  \item \code{effect_table}: A data frame with variables and their standardized effect values (direct, indirect, total)
+  \item \code{effect_long}: A long-format version of \code{effect_table}
+  \item \code{plot_object}: A ggplot2 object (if plot=TRUE), NULL otherwise
 }
 }
 \description{
-Provides standardized effect decomposition (direct, indirect, and total effects) for three major structural equation modeling frameworks:
-lavaan, piecewiseSEM, and plspm. Automatically handles zero-effect variables, generates publication-ready ggplot2 visualizations, and returns
-both wide-format and long-format effect tables. Supports effect filtering, multi-model object inputs, and customizable visualization parameters.
+Provides standardized effect decomposition (direct, indirect, and total effects) for three major structural equation modeling frameworks: 
+             lavaan, piecewiseSEM, and plspm. Automatically handles zero-effect variables, generates publication-ready ggplot2 visualizations, and returns 
+             both wide-format and long-format effect tables. Supports effect filtering, multi-model object inputs, and customizable visualization parameters.
 }
 \examples{
 \donttest{
-# Example 01: lavaan
+# Example 01: lavaan -------------------------------
 
 library(lavaan)
 
@@ -74,10 +74,10 @@ print(results$plot_object)
 results$plot_object +
   ggplot2::coord_flip()+
   ggplot2::theme_minimal() +
-  ggplot2::ggtitle("Standardized Effects for dem65")
+  ggplot2::ggtitle("Standardized effects for dem65")
 
 
-# Example 02: piecewiseSEM
+# Example 02: piecewiseSEM --------------------------
 
 library(piecewiseSEM)
 pmod <- psem(
@@ -86,12 +86,12 @@ pmod <- psem(
   lm(firesev ~ age, data = keeley),
   data = keeley
   )
-
-sem_effects(pmod, target = "rich",
+  
+sem_effects(pmod, target = "rich", 
         color_palette = c("darkgreen", "grey80", "purple"))
 
 
-# Example 03: plspm
+# Example 03: plspm ---------------------------------
 
 library(plspm)
 data(satisfaction)
@@ -113,11 +113,17 @@ sat_mod = rep("A", 6)
 
 # apply plspm
 plsmodel = plspm(satisfaction, sat_path, sat_blocks, modes = sat_mod)
-
-sem_effects(plsmodel, target = "LOY", plot = TRUE, delete.zero.effect = TRUE,
-            total_only = TRUE,
-            total_colors = RColorBrewer::brewer.pal(5,"Set3"))
-
+  
+sem_effects(plsmodel, target = "LOY", plot = TRUE, delete_zero_effect = TRUE,
+            total_only = TRUE, 
+            total_color = RColorBrewer::brewer.pal(5,"Set3"))
+   
 }
 
+}
+\seealso{
+\code{\link[lavaan]{sem}}, \code{\link[piecewiseSEM]{psem}}, \code{\link[plspm]{plspm}}
+}
+\author{
+Weiping Mei
 }

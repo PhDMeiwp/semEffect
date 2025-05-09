@@ -23,6 +23,6 @@ Imports:
     tidyr,
     dplyr,
 	utils,
-    checkmate
-Roxygen: list(markdown = TRUE)
+    checkmate,
+	RColorBrewer
 RoxygenNote: 7.3.2
