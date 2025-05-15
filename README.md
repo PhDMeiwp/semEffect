@@ -13,7 +13,7 @@
      Option 1: from Github:
 
 	 install.packages("devtools")
-	 devtools::install_github("PhDMeiwp/semEffect", dependencies = TRUE)
+	 devtools::install_github("PhDMeiwp/semEffect", force = TRUE)
 
 	 
 	 Option 2: from gitee:
