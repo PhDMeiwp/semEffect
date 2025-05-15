@@ -1,11 +1,11 @@
-# semEffect: an R package for structural equation model effect analysis and visualization
+# semEffect: One-step effect analysis and visualization for structural equation models in R
 
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/semEffect)](https://github.com/metacran/cranlogs.app)
 
 ## Description
     
-> Provides standardized effect decomposition (direct, indirect, and total effects) for three major structural equation modeling frameworks: 
-> lavaan, piecewiseSEM, and plspm. Automatically handles zero-effect variables, generates publication-ready ggplot2 visualizations, and returns 
+> Provides standardized effect decomposition (direct, indirect, and total effects) for major structural equation modeling frameworks: 
+> lavaan, piecewiseSEM, plspm, and their extensions (e.g., blavaan for Bayesian SEM). Automatically handles zero-effect variables, generates publication-ready ggplot2 visualizations, and returns 
 > both wide-format and long-format effect tables. Supports effect filtering, multi-model object inputs, and customizable visualization parameters.
 
 ## 1. Installation

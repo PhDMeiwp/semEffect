@@ -7,8 +7,8 @@ Authors@R:
 	role = c("aut", "cre"),
 	email = "meiweipingg@163.com", 
 	comment = c(ORCID = "0000-0001-6400-9862"))
-Description: Provides standardized effect decomposition (direct, indirect, and total effects) for three major structural equation modeling frameworks: 
-	lavaan, piecewiseSEM, and plspm. Automatically handles zero-effect variables, generates publication-ready ggplot2 visualizations, and returns 
+Description: Provides standardized effect decomposition (direct, indirect, and total effects) for major structural equation modeling frameworks: 
+	lavaan, piecewiseSEM, plspm, and their extensions (e.g., blavaan for Bayesian SEM). Automatically handles zero-effect variables, generates publication-ready ggplot2 visualizations, and returns 
 	both wide-format and long-format effect tables. Supports effect filtering, multi-model object inputs, and customizable visualization parameters.
 URL: https://github.com/PhDMeiwp/semEffect/
 BugReports: https://github.com/PhDMeiwp/semEffect/issues
@@ -25,4 +25,6 @@ Imports:
 	utils,
     checkmate,
 	RColorBrewer
+Suggests:
+    blavaan
 RoxygenNote: 7.3.2
