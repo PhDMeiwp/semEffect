@@ -1,6 +1,6 @@
 # semEffect: One-step effect analysis and visualization for structural equation models in R
 
-<img src=""docs/images/semEffect_logo.png"" height="300" align="right">
+<img src="docs/images/semEffect_logo.png" height="280" align="right">
 
 [![CRAN download counts](https://cranlogs.r-pkg.org/badges/grand-total/semEffect)](https://cran.r-project.org/package=semEffect)
 
