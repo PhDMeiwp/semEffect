@@ -11,12 +11,12 @@ Supports effect filtering, multi-model object inputs, and customizable visualiza
 <img src="docs/images/TOC.png" width="700">
 </div>
 
-<br>
+
 ## Citation
 
 Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis and visualization for structural equation models in R. R package version 1.2.2.
 
-<br>
+
 ## 1. Install 'semEffect' package in R
 
 
@@ -38,7 +38,7 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 	 remotes::install_git("https://gitee.com/openResearch/semEffect.git")  
 
 
-<br>
+
 ## 2. Usage
 
 	 sem_effects(
@@ -51,7 +51,7 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 	 )
 
 
-<br>	
+	
 ## 3. Examples
 
 	 library(semEffect)
