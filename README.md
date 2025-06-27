@@ -1,10 +1,10 @@
 # semEffect: One-step effect analysis and visualization for structural equation models in R
 
-<img src="docs/images/semEffect_logo.png" height="260" align="right">
+<img src="docs/images/semEffect_logo.png" height="200" align="right">
 
 [![CRAN download counts](https://cranlogs.r-pkg.org/badges/grand-total/semEffect)](https://cran.r-project.org/package=semEffect)
 
- <strong>Description</strong>:<br>
+ <strong>Description</strong>:
 <br>This R package 'semEffect' provides standardized effect decomposition (direct, indirect, and total effects) for three major Structural Equation Modeling frameworks:
 <strong>'lavaan', 'piecewiseSEM', and 'plspm'</strong>. 
 Automatically handles zero-effect variables, generates publication-ready <strong>'ggplot2' visualizations</strong>, and returns <strong>both wide-format and long-format effect tables</strong>. 
