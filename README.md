@@ -4,12 +4,12 @@
 
 [![CRAN download counts](https://cranlogs.r-pkg.org/badges/grand-total/semEffect)](https://cran.r-project.org/package=semEffect)
 
- <strong>Description</strong>:
-This R package 'semEffect' provides standardized effect decomposition (direct, indirect, and total effects) for three major <strong>Structural Equation Modeling</strong> frameworks:
- <strong>'lavaan', 'piecewiseSEM', and 'plspm'</strong>. 
-Automatically handles zero-effect variables, generates publication-ready <strong>'ggplot2' visualizations</strong>, and returns <strong>both wide-format and long-format effect tables</strong>. 
-Supports effect filtering, multi-model object inputs, and customizable visualization parameters. 
-
+ <strong>Description</strong>:<br>
+<br>This R package 'semEffect' provides standardized effect decomposition (direct, indirect, and total effects) for three major <strong>Structural Equation Modeling</strong> frameworks:
+<br> <strong>'lavaan', 'piecewiseSEM', and 'plspm'</strong>. 
+<br>Automatically handles zero-effect variables, generates publication-ready <strong>'ggplot2' visualizations</strong>, and returns <strong>both wide-format and long-format effect tables</strong>. 
+<br>Supports effect filtering, multi-model object inputs, and customizable visualization parameters. 
+</br>
 
 ## Citation
 
