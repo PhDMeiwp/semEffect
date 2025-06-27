@@ -1,22 +1,31 @@
 # semEffect: One-step effect analysis and visualization for structural equation models in R
 
-[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/semEffect)](https://github.com/metacran/cranlogs.app)
+[![CRAN download counts](https://cranlogs.r-pkg.org/badges/grand-total/semEffect)](https://cran.r-project.org/package=semEffect)
 
-## Description
-    
-> Provides standardized effect decomposition (direct, indirect, and total effects) for major structural equation modeling frameworks: 
-> lavaan, piecewiseSEM, plspm, and their extensions (e.g., blavaan for Bayesian SEM). Automatically handles zero-effect variables, generates publication-ready ggplot2 visualizations, and returns 
-> both wide-format and long-format effect tables. Supports effect filtering, multi-model object inputs, and customizable visualization parameters.
+This R package 'semEffect' provides standardized effect decomposition (direct, indirect, and total effects) for three major structural equation modeling frameworks: 'lavaan', 'piecewiseSEM', and 'plspm'. 
+Automatically handles zero-effect variables, generates publication-ready 'ggplot2' visualizations, and returns both wide-format and long-format effect tables. 
+Supports effect filtering, multi-model object inputs, and customizable visualization parameters. 
 
-## 1. Installation
 
-     Option 1: from Github:
+<img src="docs/images/TOC.png" width="490"/>
+
+## Citation
+
+Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis and visualization for structural equation models in R. R package version 1.2.2.
+
+## 1. Install 'semEffect' package in R
+
+
+### Option 1: from CRAN:
+
+	 install.packages("semEffect")
+
+### Option 2: from Github:
 
 	 install.packages("devtools")
-	 devtools::install_github("PhDMeiwp/semEffect", force = TRUE)
+	 devtools::install_github("PhDMeiwp/semEffect", dependencies = TRUE)
 
-	 
-	 Option 2: from gitee:
+### Option 3: from gitee:
 
 	 install.packages("git2r")
 	 install.packages("remotes")
@@ -32,41 +41,48 @@
 	  object,
 	  target,
 	  plot = TRUE,
-	  delete_zero_effect = TRUE,
 	  total_only = FALSE,
-	  total_color = "skyblue",
+	  total_colors = "skyblue",
 	  color_palette = c("darkgreen", "skyblue", "orange")
-	)
+	 )
 
 	
 ## 3. Examples
 
 	 library(semEffect)
-	 library(ggplot2)
 
-     # Example 01: lavaan ----------------------------------
-	 
+### Example 01: lavaan -------------------------------
+
 	 library(lavaan)
-	 
-	 model <- '
-		# Measurement model
-		ind60 =~ x1 + x2 + x3
-		dem60 =~ y1 + y2 + y3 + y4
-		dem65 =~ y5 + y6 + y7 + y8
 
-		# Structural model
-		dem60 ~ ind60
-		dem65 ~ ind60 + dem60
-		'
-	
+	 model <- '
+	  # Measurement model
+	  ind60 =~ x1 + x2 + x3
+	  dem60 =~ y1 + y2 + y3 + y4
+	  dem65 =~ y5 + y6 + y7 + y8
+
+	  # Structural model
+	  dem60 ~ ind60
+	  dem65 ~ ind60 + dem60
+	 '
 	 fit <- sem(model, data = PoliticalDemocracy)
-	
+
 	 # Analyze effects for target variable "dem65"
 	 results <- sem_effects(fit, target = "dem65")
+	 
+	 #--- Not run ----
+	 library(semPlot)
+	 semPaths(fit, what="std", nCharNodes=0)  #plot SEM
+	 #--- End Not run ---
 
 	 print(results$effect_table)
 	 print(results$effect_long)
+
+<img src="docs/images/Example_1_data.png" width="490"/>	
+	
 	 print(results$plot_object)
+
+<img src="docs/images/Example_1_plot_object.png" width="490"/>
 
 	 # Customize plot appearance
 	 results$plot_object +
@@ -74,7 +90,9 @@
 	   ggplot2::theme_minimal() +
 	   ggplot2::ggtitle("Standardized effects for dem65")
 
-	 # Example 02: piecewiseSEM -----------------------------
+<img src="docs/images/Example_1_theme_minimal.png" width="490"/>
+
+### Example 02: piecewiseSEM --------------------------
 
 	 library(piecewiseSEM)
 	 
@@ -84,12 +102,17 @@
 	  lm(firesev ~ age, data = keeley),
 	  data = keeley
 	  )
-
-	sem_effects(pmod, target = "rich",
-			color_palette = c("darkgreen", "grey80", "purple"))
-			
+	  
+	 #--- Not run ---
+	 plot(pmod)   #plot SEM
+	 #--- End Not run ---
 	 
-	 # Example 03: plspm --------------------------------------
+	 sem_effects(pmod, target = "rich",
+			color_palette = c("darkgreen", "grey80", "purple"))
+
+<img src="docs/images/Example_2.png" width="490"/>
+
+### Example 03: plspm ---------------------------------
 
 	 library(plspm)
 	 data(satisfaction)
@@ -111,10 +134,19 @@
 
 	 # apply plspm
 	 plsmodel = plspm(satisfaction, sat_path, sat_blocks, modes = sat_mod)
+	 
+	 #--- Not run ---
+	 innerplot(plsmodel)  #plot SEM
+     #--- End Not run ---
 
 	 sem_effects(plsmodel, target = "LOY", plot = TRUE, delete_zero_effect = TRUE,
 				total_only = TRUE,
-				total_color = RColorBrewer::brewer.pal(5,"Set3"))
+				total_color = RColorBrewer::brewer.pal(5,"Set2"))
+
+
+<img src="docs/images/Example_3.png" width="490"/>
+
+
 
 ## 4. Contact
 

@@ -15,7 +15,7 @@ sem_effects(
 )
 }
 \arguments{
-\item{object}{SEM object (lavaan/psem/plspm/blavaan).}
+\item{object}{SEM object (lavaan/psem/plspm).}
 
 \item{target}{Character string specifying the target variable name for effect analysis.}
 
@@ -41,12 +41,15 @@ A list containing three components:
 }
 }
 \description{
-Provides standardized effect decomposition (direct, indirect, and total effects) for major structural equation modeling frameworks:
-             lavaan, piecewiseSEM, plspm, and their extensions (e.g., blavaan for Bayesian SEM). Automatically handles zero-effect variables, generates publication-ready ggplot2 visualizations, and returns
+Provides standardized effect decomposition (direct, indirect, and total effects) for three major structural equation modeling frameworks:
+             'lavaan', 'piecewiseSEM', and 'plspm'. Automatically handles zero-effect variables, generates publication-ready 'ggplot2' visualizations, and returns
              both wide-format and long-format effect tables. Supports effect filtering, multi-model object inputs, and customizable visualization parameters.
 }
 \examples{
 \donttest{
+
+library(semEffect)
+
 # Example 01: lavaan -------------------------------
 
 library(lavaan)
@@ -121,21 +124,8 @@ sem_effects(plsmodel, target = "LOY", plot = TRUE, delete_zero_effect = TRUE,
 }
 
 }
-\references{
-Rosseel, Y. lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, \bold{2012}, 48, 1-36.
-\url{https://doi.org/10.18637/jss.v048.i02}
-
-Lefcheck, J. S. piecewiseSEM: Piecewise Structural Equation Modeling in R for Ecology, Evolution, and Systematics. Methods in Ecology and Evolution, \bold{2016}, 7, 573–579.
-\url{https://doi.org/10.1111/2041-210X.12512}
-
-Russolillo, G. Non-Metric Partial Least Squares. Electronic Journal of Statistics, \bold{2012}, 6, 1641-1669.
-\url{https://doi.org/10.1214/12-EJS724}
-
-Merkle, E.C. & Rosseel, Y. blavaan: Bayesian Structural Equation Models via Parameter Expansion. Journal of Statistical Software, \bold{2018}, 85, 1-30.
-\url{https://doi.org/10.18637/jss.v085.i04}
-}
 \seealso{
-\code{\link[lavaan]{sem}}, \code{\link[piecewiseSEM]{psem}}, \code{\link[plspm]{plspm}}, \code{\link[blavaan]{bsem}}
+\code{\link[lavaan]{sem}}, \code{\link[piecewiseSEM]{psem}}, \code{\link[plspm]{plspm}}
 }
 \author{
 Weiping Mei
