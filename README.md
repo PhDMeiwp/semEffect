@@ -6,9 +6,9 @@ This R package 'semEffect' provides standardized effect decomposition (direct, i
 Automatically handles zero-effect variables, generates publication-ready 'ggplot2' visualizations, and returns both wide-format and long-format effect tables. 
 Supports effect filtering, multi-model object inputs, and customizable visualization parameters. 
 
-
-<img src="docs/images/TOC.png" style="display: block; margin: 0 auto;" alt="Centered Image" align="center" width="700">
-
+<div align="center">
+<img src="docs/images/TOC.png" alt="Centered Image" width="700">
+</div>
 
 ## Citation
 
