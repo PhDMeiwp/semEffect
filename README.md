@@ -6,8 +6,9 @@ This R package 'semEffect' provides standardized effect decomposition (direct, i
 Automatically handles zero-effect variables, generates publication-ready 'ggplot2' visualizations, and returns both wide-format and long-format effect tables. 
 Supports effect filtering, multi-model object inputs, and customizable visualization parameters. 
 
-
+<center>
 <img src="docs/images/TOC.png" width="490"/>
+</center>
 
 ## Citation
 
@@ -77,12 +78,15 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 
 	 print(results$effect_table)
 	 print(results$effect_long)
-
+	 
+<center>
 <img src="docs/images/Example_1_data.png" width="490"/>	
-	
+</center>	
 	 print(results$plot_object)
 
+<center>
 <img src="docs/images/Example_1_plot_object.png" width="490"/>
+</center>
 
 	 # Customize plot appearance
 	 results$plot_object +
@@ -90,7 +94,9 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 	   ggplot2::theme_minimal() +
 	   ggplot2::ggtitle("Standardized effects for dem65")
 
+<center>
 <img src="docs/images/Example_1_theme_minimal.png" width="490"/>
+</center>
 
 ### Example 02: piecewiseSEM --------------------------
 
@@ -110,7 +116,9 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 	 sem_effects(pmod, target = "rich",
 			color_palette = c("darkgreen", "grey80", "purple"))
 
+<center>
 <img src="docs/images/Example_2.png" width="490"/>
+</center>
 
 ### Example 03: plspm ---------------------------------
 
@@ -143,10 +151,9 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 				total_only = TRUE,
 				total_color = RColorBrewer::brewer.pal(5,"Set2"))
 
-
+<center>
 <img src="docs/images/Example_3.png" width="490"/>
-
-
+</center>
 
 ## 4. Contact
 
