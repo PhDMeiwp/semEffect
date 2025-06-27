@@ -7,7 +7,7 @@ Automatically handles zero-effect variables, generates publication-ready 'ggplot
 Supports effect filtering, multi-model object inputs, and customizable visualization parameters. 
 
 
-<img src="docs/images/TOC.png" class="center-img" width="490">
+<img src="docs/images/TOC.png" style="display: block; margin: 0 auto;" alt="Centered Image" width="700">
 
 
 ## Citation
@@ -81,10 +81,10 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 	 print(results$plot_object)	 
 	 
 
-<img src="docs/images/Example_1_data.png"  class="center-img" width="360">
+<img src="docs/images/Example_1_data.png"  style="display: block; margin: 0 auto;" alt="Centered Image" width="600">
 
 
-<img src="docs/images/Example_1_plot_object.png"  class="center-img" width="360">
+<img src="docs/images/Example_1_plot_object.png"  style="display: block; margin: 0 auto;" alt="Centered Image" width="600">
 
 
 	 # Customize plot appearance
@@ -93,7 +93,7 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 	   ggplot2::theme_minimal() +
 	   ggplot2::ggtitle("Standardized effects for dem65")
 
-<img src="docs/images/Example_1_theme_minimal.png"  class="center-img" width="360">
+<img src="docs/images/Example_1_theme_minimal.png"  style="display: block; margin: 0 auto;" alt="Centered Image" width="600">
 
 
 ### Example 02: piecewiseSEM --------------------------
@@ -114,7 +114,7 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 	 sem_effects(pmod, target = "rich",
 			color_palette = c("darkgreen", "grey80", "purple"))
 
-<img src="docs/images/Example_2.png"  class="center-img" width="360">
+<img src="docs/images/Example_2.png"  style="display: block; margin: 0 auto;" alt="Centered Image" width="600">
 
 
 ### Example 03: plspm ---------------------------------
@@ -148,7 +148,7 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 				total_only = TRUE,
 				total_color = RColorBrewer::brewer.pal(5,"Set2"))
 
-<img src="docs/images/Example_3.png"  class="center-img" out.width="360">
+<img src="docs/images/Example_3.png"  style="display: block; margin: 0 auto;" alt="Centered Image" width="600">
 
 
 ## 4. Contact
