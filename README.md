@@ -80,11 +80,11 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 	 print(results$effect_long)
 	 print(results$plot_object)	 
 	 
-<center>
-<img src="docs/images/Example_1_data.png" width="490"/>	
 
-<img src="docs/images/Example_1_plot_object.png" width="490"/>
-</center>
+<img src="docs/images/Example_1_data.png"  class="center-img" out.width="60%"/>
+
+<img src="docs/images/Example_1_plot_object.png"  class="center-img" out.width="60%"/>
+
 
 	 # Customize plot appearance
 	 results$plot_object +
@@ -92,9 +92,8 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 	   ggplot2::theme_minimal() +
 	   ggplot2::ggtitle("Standardized effects for dem65")
 
-<center>
-<img src="docs/images/Example_1_theme_minimal.png" width="490"/>
-</center>
+<img src="docs/images/Example_1_theme_minimal.png"  class="center-img" out.width="60%"/>
+
 
 ### Example 02: piecewiseSEM --------------------------
 
@@ -114,9 +113,8 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 	 sem_effects(pmod, target = "rich",
 			color_palette = c("darkgreen", "grey80", "purple"))
 
-<center>
-<img src="docs/images/Example_2.png" width="490"/>
-</center>
+<img src="docs/images/Example_2.png"  class="center-img" out.width="60%"/>
+
 
 ### Example 03: plspm ---------------------------------
 
@@ -149,9 +147,8 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 				total_only = TRUE,
 				total_color = RColorBrewer::brewer.pal(5,"Set2"))
 
-<center>
-<img src="docs/images/Example_3.png" width="490"/>
-</center>
+<img src="docs/images/Example_3.png"  class="center-img" out.width="60%"/>
+
 
 ## 4. Contact
 
