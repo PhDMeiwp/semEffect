@@ -2,18 +2,21 @@
 
 [![CRAN download counts](https://cranlogs.r-pkg.org/badges/grand-total/semEffect)](https://cran.r-project.org/package=semEffect)
 
-This R package 'semEffect' provides standardized effect decomposition (direct, indirect, and total effects) for three major structural equation modeling frameworks: 'lavaan', 'piecewiseSEM', and 'plspm'. 
+## Description
+This R package 'semEffect' provides standardized effect decomposition (direct, indirect, and total effects) for three major structural equation modeling frameworks: <strong>'lavaan', 'piecewiseSEM', and 'plspm'</strong>. 
 Automatically handles zero-effect variables, generates publication-ready 'ggplot2' visualizations, and returns both wide-format and long-format effect tables. 
 Supports effect filtering, multi-model object inputs, and customizable visualization parameters. 
 
 <div align="center">
-<img src="docs/images/TOC.png" alt="Centered Image" width="700">
+<img src="docs/images/TOC.png" width="700">
 </div>
 
+<br>
 ## Citation
 
 Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis and visualization for structural equation models in R. R package version 1.2.2.
 
+<br>
 ## 1. Install 'semEffect' package in R
 
 
@@ -35,7 +38,7 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 	 remotes::install_git("https://gitee.com/openResearch/semEffect.git")  
 
 
-
+<br>
 ## 2. Usage
 
 	 sem_effects(
@@ -47,7 +50,8 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 	  color_palette = c("darkgreen", "skyblue", "orange")
 	 )
 
-	
+
+<br>	
 ## 3. Examples
 
 	 library(semEffect)
@@ -81,11 +85,13 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 	 print(results$plot_object)	 
 	 
 
-<img src="docs/images/Example_1_data.png"  style="display: block; margin: 0 auto;" alt="Centered Image" align="center" width="600">
+<div align="center">
+<img src="docs/images/Example_1_data.png"  width="600">
+</div>
 
-
-<img src="docs/images/Example_1_plot_object.png"  style="display: block; margin: 0 auto;" alt="Centered Image" align="center" width="600">
-
+<div align="center">
+<img src="docs/images/Example_1_plot_object.png"  width="600">
+</div>
 
 	 # Customize plot appearance
 	 results$plot_object +
@@ -93,8 +99,9 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 	   ggplot2::theme_minimal() +
 	   ggplot2::ggtitle("Standardized effects for dem65")
 
-<img src="docs/images/Example_1_theme_minimal.png"  style="display: block; margin: 0 auto;" alt="Centered Image" align="center" width="600">
-
+<div align="center">
+<img src="docs/images/Example_1_theme_minimal.png"  width="600">
+</div>
 
 ### Example 02: piecewiseSEM --------------------------
 
@@ -114,8 +121,9 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 	 sem_effects(pmod, target = "rich",
 			color_palette = c("darkgreen", "grey80", "purple"))
 
-<img src="docs/images/Example_2.png"  style="display: block; margin: 0 auto;" alt="Centered Image" align="center" width="600">
-
+<div align="center">
+<img src="docs/images/Example_2.png"  width="600">
+</div>
 
 ### Example 03: plspm ---------------------------------
 
@@ -148,8 +156,9 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 				total_only = TRUE,
 				total_color = RColorBrewer::brewer.pal(5,"Set2"))
 
-<img src="docs/images/Example_3.png"  style="display: block; margin: 0 auto;" alt="Centered Image" align="center" width="600">
-
+<div align="center">
+<img src="docs/images/Example_3.png"  width="600">
+</div>
 
 ## 4. Contact
 
