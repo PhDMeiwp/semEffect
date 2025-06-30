@@ -29,8 +29,6 @@
 #' @examples
 #' \donttest{
 #'
-#' library(semEffect)
-#'
 #' # Example 01: lavaan -------------------------------
 #'
 #' library(lavaan)
@@ -109,8 +107,8 @@
 #' @importFrom ggplot2 ggplot aes geom_col scale_fill_manual geom_hline labs theme_bw position_dodge
 #' @importFrom tidyr separate pivot_longer
 #' @importFrom dplyr %>% filter select
-#' @importFrom utils install.packages
 #' @importFrom RColorBrewer brewer.pal
+#' @import utils
 #' @import checkmate
 #' @import plspm
 #' @export
@@ -124,12 +122,10 @@ sem_effects <- function(
     total_color = "skyblue",
     color_palette = c("darkgreen", "skyblue", "orange")) {
 
-# Automatically install missing dependencies:
+
+  # Automatically load but not install missing dependencies:
   required_packages <- c("lavaan", "piecewiseSEM", "plspm", "ggplot2", "checkmate", "tidyr", "dplyr", "RColorBrewer")
   for (pkg in required_packages) {
-    if (!requireNamespace(pkg, quietly = TRUE)) {
-      install.packages(pkg)
-    }
     suppressPackageStartupMessages(
       library(pkg, character.only = TRUE, warn.conflicts = FALSE)
     )

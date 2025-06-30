@@ -48,8 +48,6 @@ Provides standardized effect decomposition (direct, indirect, and total effects)
 \examples{
 \donttest{
 
-library(semEffect)
-
 # Example 01: lavaan -------------------------------
 
 library(lavaan)
