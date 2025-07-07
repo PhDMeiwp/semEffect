@@ -3,7 +3,9 @@
 
 [![CRAN download counts](https://cranlogs.r-pkg.org/badges/grand-total/semEffect)](https://cran.r-project.org/package=semEffect)
 
-<img src="docs/images/semEffect_logo.png" height="200" align="right">
+<div style="text-align: right;">
+<img src="docs/images/semEffect_logo.png" width="200">
+</div>
 
  <strong>Description</strong>:
 <br>This R package 'semEffect' provides standardized effect decomposition (direct, indirect, and total effects) for three major Structural Equation Modeling frameworks:
