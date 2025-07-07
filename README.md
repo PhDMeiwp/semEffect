@@ -3,7 +3,7 @@
 
 [![CRAN download counts](https://cranlogs.r-pkg.org/badges/grand-total/semEffect)](https://cran.r-project.org/package=semEffect)
 
-<div style="text-align: right;">
+<div align="right">
 <img src="docs/images/semEffect_logo.png" width="200">
 </div>
 
