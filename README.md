@@ -8,8 +8,8 @@
 </div>
 
 ## Description
-<br>This R package 'semEffect' provides standardized effect decomposition (direct, indirect, and total effects) for three major Structural Equation Modeling frameworks:
-<strong>'lavaan', 'piecewiseSEM', and 'plspm'</strong>. 
+<br>This R package 'semEffect' provides standardized effect decomposition (direct, indirect, and total effects) for major Structural Equation Modeling frameworks:
+<strong>'lavaan', 'piecewiseSEM', 'plspm', and their extensions (e.g., 'blavaan' for Bayesian SEM)</strong>. 
 Automatically handles zero-effect variables, generates publication-ready <strong>'ggplot2' visualizations</strong>, and returns <strong>both wide-format and long-format effect tables</strong>. 
 Supports effect filtering, multi-model object inputs, and customizable visualization parameters. 
 </br>
