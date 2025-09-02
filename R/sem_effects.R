@@ -8,6 +8,7 @@
 #' @param target Character string specifying the target variable name for effect analysis.
 #' @param plot Logical indicating whether to generate effect visualization plots (default: \code{TRUE}).
 #' @param delete_zero_effect Logical indicating whether to removes rows where all specified effect columns contain only zeros (default: \code{TRUE}).
+#' @param zero_threshold Threshold for negligible variables (default: 1e-10). A variable will be removed if 'delete_zero_effect' is TRUE and both of the following conditions are met: (i) the absolute value each effect type ('Direct-Effect','Indirect-Effect', and 'Total-Effect') is less than the threshold; AND (ii) the absolute value of the sum of the three effect values is also less than the threshold.
 #' @param total_only Logical controlling plot mode. If \code{TRUE}, shows only total effects with customizable colors;
 #'   if \code{FALSE}, displays all effect types with palette coloring (default: \code{FALSE}).
 #' @param total_color Single color or vector of colors for total effect bars when \code{total_only=TRUE}
@@ -118,6 +119,7 @@ sem_effects <- function(
     target,
     plot = TRUE,
     delete_zero_effect = TRUE,
+    zero_threshold = 1e-10,
     total_only = FALSE,
     total_color = "skyblue",
     color_palette = c("darkgreen", "skyblue", "orange")) {
@@ -262,7 +264,7 @@ sem_effects <- function(
   # Check the all-zero effects:
   all_zero_rows <- apply(effect_filtered[, c("Direct_Effect", "Indirect_Effect", "Total_Effect")], 1,   # 1 means row, 2 means column.
                          function(x)
-                         all(abs(x) < 1e-10) && abs(sum(x)) < 1e-10)
+                         all(abs(x) < as.numeric(zero_threshold)) && abs(sum(x)) < as.numeric(zero_threshold))
 
   if (any(all_zero_rows)) {
     zero_vars <- effect_filtered$Variable[all_zero_rows]

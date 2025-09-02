@@ -1,6 +1,6 @@
 Package: semEffect
 Title: Structural Equation Model Effect Analysis and Visualization
-Version: 1.2.3
+Version: 1.3.0
 Authors@R: 
     person(given = "Weiping", 
 	family = "Mei", 

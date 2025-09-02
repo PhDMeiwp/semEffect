@@ -9,6 +9,7 @@ sem_effects(
   target,
   plot = TRUE,
   delete_zero_effect = TRUE,
+  zero_threshold = 1e-10,
   total_only = FALSE,
   total_color = "skyblue",
   color_palette = c("darkgreen", "skyblue", "orange")
@@ -22,6 +23,8 @@ sem_effects(
 \item{plot}{Logical indicating whether to generate effect visualization plots (default: \code{TRUE}).}
 
 \item{delete_zero_effect}{Logical indicating whether to removes rows where all specified effect columns contain only zeros (default: \code{TRUE}).}
+
+\item{zero_threshold}{Threshold for negligible variables (default: 1e-10). A variable will be removed if 'delete_zero_effect' is TRUE and both of the following conditions are met: (i) the absolute value each effect type ('Direct-Effect','Indirect-Effect', and 'Total-Effect') is less than the threshold; AND (ii) the absolute value of the sum of the three effect values is also less than the threshold.}
 
 \item{total_only}{Logical controlling plot mode. If \code{TRUE}, shows only total effects with customizable colors;
 if \code{FALSE}, displays all effect types with palette coloring (default: \code{FALSE}).}

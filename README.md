@@ -16,7 +16,7 @@ Supports effect filtering, multi-model object inputs, and customizable visualiza
 
 ## Citation
 
-Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis and visualization for structural equation models in R. R package version 1.2.3.
+Mei et al. (2025) semEffect: One-step effect analysis and visualization for structural equation models in R. R package version 1.3.0.
 
 <div align="center">
 <img src="docs/images/TOC.png" width="600">
@@ -46,15 +46,17 @@ Mei W, Jiang L, Song M, Li J, Luo C (2025) semEffect: One-step effect analysis a
 
 ## 2. Usage
 
-	 sem_effects(
-	  object,
-	  target,
-	  plot = TRUE,
-	  total_only = FALSE,
-	  total_colors = "skyblue",
-	  color_palette = c("darkgreen", "skyblue", "orange")
-	 )
 
+	 sem_effects(
+	   object,
+	   target,
+	   plot = TRUE,
+	   delete_zero_effect = TRUE,
+	   zero_threshold = 1e-10,
+	   total_only = FALSE,
+	   total_color = "skyblue",
+	   color_palette = c("darkgreen", "skyblue", "orange")
+	  )
 
 	
 ## 3. Examples
